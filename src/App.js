@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Adminbody from './components/adminbody/Adminbody';
+import Sidebar from './components/sidebar/Sidebar';
 
 function App() {
+  const [showSidebar,setShowSidebar] = useState(true);
+
+  const handleSidebar = () => {
+    setShowSidebar(true);
+  }
+
+  const hideSidebar = () => {
+    setShowSidebar(false);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main">
+      {showSidebar && <Sidebar hideSidebar={hideSidebar}/>}
+      <Adminbody handleSidebar={handleSidebar}/>
     </div>
   );
 }
